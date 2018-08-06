@@ -30,9 +30,9 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
-                                                          longitude:151.2086
-                                                               zoom:6];
+  GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:23.012090
+                                                          longitude:72.500060
+                                                               zoom:17];
   GMSMapView *view = [GMSMapView mapWithFrame:CGRectZero camera:camera];
   view.delegate = self;
   self.view = view;
@@ -46,6 +46,12 @@
   _statusLabel.textAlignment = NSTextAlignmentCenter;
 
   [view addSubview:_statusLabel];
+    
+    GMSMutablePath *path = [[GMSMutablePath alloc] init];
+    [path addCoordinate: CLLocationCoordinate2DMake(23.012090, 72.503360)];
+    [path addCoordinate: CLLocationCoordinate2DMake(23.012090, 72.500060)];
+    GMSPolygon *polygon = [GMSPolygon polygonWithPath:path];
+    polygon.map = view;
 }
 
 - (void)mapViewDidStartTileRendering:(GMSMapView *)mapView {
